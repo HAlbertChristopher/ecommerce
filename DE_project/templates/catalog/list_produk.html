@@ -1,0 +1,49 @@
+<!-- catalog/product_list.html -->
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Produk</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+
+    <header>
+        <h1>Daftar Produk</h1>
+        <nav>
+            <a href="/">Beranda</a>
+            <a href="/catalog/">Katalog</a>
+        </nav>
+    </header>
+
+    <section class="product-list">
+        <div class="container">
+            <div class="row">
+                {% for product in products %}
+                    <div class="col-md-4">
+                        <div class="product-item">
+                            {% if product.image %}
+                                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
+                            {% else %}
+                                <img src="{% static 'images/default-product.png' %}" alt="{{ product.name }}" class="product-image">
+                            {% endif %}
+                            <h2>{{ product.name }}</h2>
+                            <p><strong>Kategori:</strong> {{ product.category.name }}</p>
+                            <p><strong>Harga:</strong> Rp {{ product.price|floatformat:2 }}</p>
+                            <p>{{ product.description|slice:":100" }}...</p>
+                            <a href="{% url 'product_detail' product.slug %}" class="btn-detail">Lihat Detail</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Katalog Produk</p>
+    </footer>
+
+</body>
+</html>
