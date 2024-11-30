@@ -1,12 +1,18 @@
 # PROJECT_ECOMMERCE 
 
-Kelompok 4 Kelas A
+(Kelompok 4 Kelas A)
+
 Nama Anggota:
-Hizkia Albert Christopher_230907501029
-Alvin Patinggi_230907502028
-Azmi Nadhifah Khalishah_230907500011
-Cecilia Stefani_230907501018
-Safa Rhiyanda Iskandar_230907502024
+
+- Hizkia Albert Christopher_230907501029
+
+- Alvin Patinggi_230907502028
+
+- Azmi Nadhifah Khalishah_230907500011
+
+- Cecilia Stefani_230907501018
+
+- Safa Rhiyanda Iskandar_230907502024
 
 Membuat tampilan login.html untuk user
 ![image](https://github.com/user-attachments/assets/f8aeca78-ab99-45d4-8b69-e8bbd9ff3f54)
