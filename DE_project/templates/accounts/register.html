@@ -1,51 +1,63 @@
+{% block content %}
+<div style="display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f0f8ff;">
+    <div class="service-container-register" style="background-color: #ffffff; border-radius: 10px; padding: 20px 30px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); max-width: 500px; width: 100%; text-align: center;">
+        <h2 style="color: #333;">Register</h2>
+        <p style="color: #666;">Buat akun terlebih dahulu untuk menikmati produk kami</p>
 
-{%block content%}
-<h2>Register</h2>
-    <p>Buat akun terlebih dahulu untuk menikmati produk kami</p>
-    {% if msg %}
-        <span class="text-error">{{ msg | safe }}</span>
-    {% endif %}
-    <ul class="messages">
-        {% for field, errors in form.errors.items %}
-            {% for error in errors %}
-                <li class="error">{{ error }}</li>
+        {% if msg %}
+        <span class="text-error" style="color: #d9534f; font-size: 14px; display: block; margin-bottom: 10px;">{{ msg | safe }}</span>
+        {% endif %}
+
+        {% if form.errors %}
+        <ul class="messages" style="list-style: none; padding: 0; color: #d9534f; margin-bottom: 15px;">
+            {% for field, errors in form.errors.items %}
+                {% for error in errors %}
+                <li class="error" style="padding: 5px 0;">{{ error }}</li>
+                {% endfor %}
             {% endfor %}
-        {% endfor %}
-    </ul>
-    <form method="post">
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="username">Username <span class="text-danger">*</span></label>
-            {{ form.username }}
+        </ul>
+        {% endif %}
+
+        <form method="post" style="text-align: left;">
+            {% csrf_token %}
+            <div class="form-group" style="margin-bottom: 15px;">
+                <label for="username">Username <span style="color: #d9534f;">*</span></label>
+                {{ form.username }}
+            </div>
+            <div class="form-group" style="margin-bottom: 15px;">
+                <label for="first_name">First Name <span style="color: #d9534f;">*</span></label>
+                {{ form.first_name }}
+            </div>
+            <div class="form-group" style="margin-bottom: 15px;">
+                <label for="last_name">Last Name <span style="color: #d9534f;">*</span></label>
+                {{ form.last_name }}
+            </div>
+            <div class="form-group" style="margin-bottom: 15px;">
+                <label for="phone_number">Nomor WhatsApp <span style="color: #d9534f;">*</span></label>
+                {{ form.phone_number }}
+            </div>
+            <div class="form-group" style="margin-bottom: 15px;">
+                <label for="email">E-Mail Aktif <span style="color: #d9534f;">*</span></label>
+                {{ form.email }}
+            </div>
+            <div class="form-group" style="margin-bottom: 15px;">
+                <label for="password1">Password <span style="color: #d9534f;">*</span></label>
+                {{ form.password1 }}
+            </div>
+            <div class="form-group" style="margin-bottom: 15px;">
+                <label for="password2">Confirm Password <span style="color: #d9534f;">*</span></label>
+                {{ form.password2 }}
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <input type="submit" value="Daftar Akun" style="background-color: #007bff; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px;">
+            </div>
+        </form>
+
+        <div class="text-reset-password" style="margin-top: 20px;">
+            <p style="color: #555;">Sudah punya akun? 
+                <a href="{% url 'login' %}" style="color: #007bff; text-decoration: none; font-weight: bold;">Log In disini</a>
+            </p>
         </div>
-        <div class="form-group">
-            <label for="first_name">First Name <span class="text-danger">*</span></label>
-            {{ form.first_name }}
-        </div>
-        <div class="form-group">
-            <label for="last_name">Last Name <span class="text-danger">*</span></label>
-            {{ form.last_name }}
-        </div>
-        <div class="form-group">
-            <label for="phone_number">Nomor WhatsApp <span class="text-danger">*</span></label>
-            {{ form.phone_number }}
-        </div>
-        <div class="form-group">
-            <label for="email">E-Mail Aktif <span class="text-danger">*</span></label>
-            {{ form.email }}
-        </div>
-        <div class="form-group">
-            <label for="password1">Password <span class="text-danger">*</span></label>
-            {{ form.password1 }}
-        </div>
-        <div class="form-group">
-            <label for="password2">Confirm Password <span class="text-danger">*</span></label>
-            {{ form.password2 }}
-        </div>
-        <input type="submit" value="Daftar Akun" class="submit-btn-modal">
-    </form>
-    <div class="text-reset-password">Sudah punya akun? 
-    <a href="{% url 'login' %}" class="reset-password">Log In disini</a>
     </div>
 </div>
 {% endblock %}
