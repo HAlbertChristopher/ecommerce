@@ -1,26 +1,37 @@
+{% block content %}
+<div style="display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f0f8ff;">
+    <div class="service-container-password" style="background-color: #ffffff; border-radius: 10px; padding: 20px 30px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); max-width: 400px; width: 100%; text-align: center;">
+        <h1 style="color: #333;">Login</h1>
+        <p style="color: #666;">Silahkan masukkan email dan password Anda untuk login</p>
 
-{%block content%}
-<div class="service-container-password">
-    <h1>Login</h1>
-    <p>Silahkan masukkan email dan password anda untuk login</p>
-    {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="submit-btn-modal">Login</button>
-    </form>
-    <div class="text-reset-password-sm">Anda Lupa Password?
-        <a href="{% url 'password_reset' %}" class="reset-password-sm"> Lupa Password</a>
+        {% if messages %}
+        <ul class="messages" style="list-style: none; padding: 0; margin: 0 0 15px; color: #d9534f;">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %} style="padding: 10px; background: #f8d7da; border-radius: 5px; margin-bottom: 5px;">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div>
+                <button type="submit" class="submit-btn-modal" style="background-color: #007bff; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-top: 10px; transition: background 0.3s;">
+                    Login
+                </button>
+            </div>
+        </form>
+
+        <div class="additional-links" style="margin-top: 20px;">
+            <p class="text-reset-password-sm" style="color: #555;">
+                Anda Lupa Password? 
+                <a href="{% url 'password_reset' %}" class="reset-password-sm" style="color: #007bff; text-decoration: none;">Lupa Password</a>
+            </p>
+            <p class="text-reset-password-sm" style="color: #555;">
+                Belum punya akun? 
+                <a href="{% url 'register' %}" class="reset-password-sm" style="color: #007bff; text-decoration: none;">Register</a>
+            </p>
         </div>
-        
-        <div class="text-reset-password-sm">Belum punya akun?
-            <a href="{% url 'register' %}" class="reset-password-sm"> Register</a>
-            </div> 
+    </div>
 </div>
-{%endblock%}
+{% endblock %}
